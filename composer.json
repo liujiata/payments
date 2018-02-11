@@ -1,0 +1,25 @@
+{
+	"name":"liujiata/payments",
+	"description":"intergration fuiou, all pay",
+	"keywords":"fuiou pay alipay weChat",
+	"type":"library",
+	"license":"MIT",
+	"support":{
+		"source":"https://github.com/liujiata/liujiata"
+	},
+	"authors":[{
+		"name":"liujiata",
+		"email":"9371468@qq.com",
+	}],
+	"require":{
+		"php":">=5.6.6",
+		"monolog":"~1.23",
+	},
+	"autoload":{
+		"psr-4":{
+			"Liujiata\\":"pay/",
+			"Liujiata\\Support\\":"support/",
+		}
+	}
+
+}
