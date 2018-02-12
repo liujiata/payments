@@ -1,7 +1,7 @@
 {
 	"name":"liujiata/payments",
 	"description":"intergration fuiou, all pay",
-	"keywords":"fuiou pay alipay weChat",
+	"keywords":["fuiou", "pay", "alipay"],
 	"type":"library",
 	"license":"MIT",
 	"support":{
