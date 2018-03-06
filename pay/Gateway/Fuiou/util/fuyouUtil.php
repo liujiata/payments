@@ -1,7 +1,7 @@
 <?php
 namespace Liujiata\Gateway\Fuiou\Util;
 
-class FuyouUti{
+class FuyouUtil{
 	public static $xmlHead = "<?xml version='1.0' encoding='UTF-8'?>";
 	/**
 	*@param istesturl 测试地址
@@ -24,9 +24,9 @@ class FuyouUti{
 	* 18.预授权撤销接口
 	**/
 	public static function urlFactory($istestUrl,$state){
-		$realUrl = FUYOU_URL_TEST;
-		if(!$realUrl){
-			$realUrl = FUYOU_URL_REAL;
+		$realUrl = "https://jzh-test.fuiou.com/jzh/";
+		if(!$istestUrl){
+			$realUrl = "https://jzh-test.fuiou.com/jzh/";
 		}
 		switch($state){
 			case 1:

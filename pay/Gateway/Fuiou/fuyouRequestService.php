@@ -1,7 +1,8 @@
 <?php
 namespace Liujiata\Gateway\Fuiou;
 
-use Liujiata\Gateway\Fuiou\Util;
+use Liujiata\Gateway\Fuiou\Util\FuyouUtil;
+use Liujiata\Gateway\Fuiou\Util\FuyouAes;
 
 class FuyouRequestService {
 
@@ -16,7 +17,7 @@ class FuyouRequestService {
 	function __construct($option)
 	{
 		$this->merchantId = $option['mchnt_cd'];
-		$this->signKey = $option['signKey'];
+		$this->signKey = $option['singKey'];
 		$this->fyver = $option['fyver'];
 		$this->testMode = $option['testMode'];
 	}

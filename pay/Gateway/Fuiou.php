@@ -1,12 +1,11 @@
 <?php
 namespace Liujiata\Gateway;
 
-use Liujiata\Gateway\Fuiou;
+use Liujiata\Gateway\Fuiou\FuyouRequestService;
 /*
  *接口详情请返回fuiou接口
  */
 class Fuiou {
-
 	function __construct($config){
 		$this->config = $config;
 		$this->option = [
@@ -15,19 +14,21 @@ class Fuiou {
 			'fyver'	=>	$this->config['fyver'],
 			'testMode'	=>	$this->config['testMode']
 		];
-		$this->fuyouRequestService = new fuyouRequestService($this->option);
+		$this->noticeUrl = $this->config['noticeUrl'];
+		$this->returnUrl = $this->config['returnUrl'];
+		$this->fuyouRequestService = new FuyouRequestService($this->option);
 	}
 
 	//调用notice通知地址*******更改为自己的回调处理接口********
 	protected function makeNoticeUrl($actionType)
 	{
-		return "http://" . $_SERVER['HTTP_HOST'] . "/Fuyoupay/Fyreturn/" . $actionType;
+		return $this->noticeUrl . $actionType;
 	}
 
 	//调用return通知地址*******更改为自己的回调处理接口********
 	protected function makeReturnUrl($actionType)
 	{
-		return "http://" . $_SERVER['HTTP_HOST'] . "/Fuyoupay/Fyreturn/" . $actionType;
+		return $this->returnUrl . $actionType;
 	}
 
 	/**

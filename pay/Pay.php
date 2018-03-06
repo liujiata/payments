@@ -3,22 +3,25 @@ namespace Liujiata;
 
 use Monolog\Handler;
 use Monolog;
-use Liujiata\Support;
+use Liujiata\Support\Config;
 
 class Pay{
+
+	protected $config;
 
 	function __construct($config)
 	{
 		$this->config = new Config($config);
+
 	}
 	//集中处理调用
 	protected function pay($method)
 	{
 		!isset($this->config['log'])?:$this->registerLog($this->config['log']);
-		$gateway = NAMESPACE."\\Gateway\\".$method;
+		$gateway = __NAMESPACE__."\\Gateway\\".$method;
 
 		if(class_exists($gateway)){
-			self::make($gateway);
+			return self::make($gateway);
 		}
 	}
 
@@ -35,7 +38,7 @@ class Pay{
 	}
 
 	//实例化
-	protected static function make($method)
+	protected function make($method)
 	{
 		$app = new $method($this->config);
 
@@ -46,7 +49,6 @@ class Pay{
 	{
 		if(is_string($method)){
 			$pay = new self(...$parameters);
-
 			return $pay->pay($method);
 		}
 	}
